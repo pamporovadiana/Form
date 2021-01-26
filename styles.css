@@ -1,0 +1,39 @@
+body {
+    font-family: Tahoma, Arial, Helvetica, Sans-Serif;
+    background-image: url('./assets/page.png');
+    background-attachment: fixed;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+header,
+footer {
+    height: 150px;
+    background-color: #0D0080;
+}
+
+main {
+    min-height: 83vh;
+}
+
+button {
+    width: 100px;
+}
+
+.hidden {
+    display: none;
+}
+
+#concent-checkbox {
+    height: 50px;
+}
+
+#height-record {
+    height: 100px;
+}

@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Step Form</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <main id="multi-step-form" class="container">
+        <h1 class="text-center py-5">Multi Step Form</h1>
+        <h6>Fields marked with an<strong class="text-danger mx-1">*</strong>are required FAST</h6>
+
+        <!-- DISCLAIMER -->
+        <form id="disclaimer" class="current-form">
+            <h3 class="text-uppercase text-primary">DISCLAIMER</h3>
+            <h2>FAST Application</h2>
+            <p class="text-danger font-weight-bold"><u>The average processing time is 6 months. (Additional
+                    delays may result after government assessment.)</u></p>
+            <div>
+                <h4><u>Instructions</u></h4>
+                <div>1. Complete one (1) FAST application form per person.</div>
+                <div>2. Complete the address and employment fields for the last five (5) years in full, leaving NO gaps.
+                </div>
+                <div>3. At the end of the form you will be directed to our payment provider to pay the processing
+                    service fee - we cannot process your form unless you pay this fee.</div>
+                <div>4. When we receive your completed form and service fee, you will receive email confirmation from us
+                    within two business days.</div>
+            </div>
+            <div>
+                <h4><u>FAST Application Service</u></h4>
+                <div>1. On receipt of your application and our service fee payment, we will thoroughly check your data
+                    for errors and missing information.</div>
+                <div>2. We pay the government fee for the background and security checks using the card listed on your
+                    application.</div>
+                <div>3. Once your application is submitted, you will receive an email with your Traveler Profile and the
+                    next steps. Please check your junk mail if you cannot find an email from us. If you have not
+                    received an email from info@fastpassapplication.com within two business days please get in
+                    touch.</div>
+                <div>4. We guide you through the mandatory interview process.</div>
+                <div>5. We answer any questions you have relating to the FAST application process.</div>
+            </div>
+            <div>
+                <h4><u>FAST Application Fees & Processing Times</u></h4>
+                <div>1. USD $139.99 service fee for checking and processing your application. This fee is payable when
+                    you submit your form.</div>
+                <div>2. USD $50.00 for government background and security checks. This fee will be taken from the credit
+                    card listed on the form.</div>
+                <div>3. The average official processing time is 6 months. (Additional delays may result after government
+                    assessment.)</div>
+                <div class="text-danger font-weight-bold">We aim to submit your application within 24 hours, although
+                    missing
+                    information may delay
+                    this.</div>
+            </div>
+            <div>
+                <h4><u>FAST Refunds & Cancellation</u></h4>
+                <div>1. The government fee (for background & security checks) is paid directly to the government and is
+                    non refundable.</div>
+                <div>2. We issue refunds under certain circumstances. If you believe that you should be refunded the IVT
+                    service fee, please e-mail info@fastpassapplication.com with the subject line: Name of
+                    Applicant: Refund</div>
+            </div>
+            <div>
+                <h4><u>Consent & Disclaimer</u></h4>
+                <div>1. We are not responsible for applications sent by mail or improperly submitted.</div>
+                <div>2. We are not responsible for delays caused by incomplete applications or delays caused by the
+                    government.</div>
+                <div>3. We are not responsible for applications that are denied.</div>
+                <div>4. Our service fee is non-refundable once applications are submitted error-free to the government.
+                </div>
+                <div>5. I agree that the government fee will be taken from the credit card provided.</div>
+                <div>6. I assert that I understand I am using FastPassApplication.com (a third party service) to apply
+                    for my FAST membership.</div>
+                <div>7. I assert that I have full authorization to use the card and PayPal payment account for all
+                    payments related to this application.</div>
+                <div>8. I assert that I have read and agreed to the terms and conditions outlined above and listed on
+                    the website.</div>
+            </div>
+            <!-- Concent checkbox -->
+            <div id="concent-checkbox" class="form-check mb-3 my-3">
+                <input type="checkbox" class="form-check-input" id="concent" name="concent" required>
+                <label for="concent" class="form-check-label font-weight-bold">
+                    Check this box to consent.<strong class="text-danger mx-1">*</strong>
+                </label>
+                <div class="text-danger warning">This is a required field.</div>
+            </div>
+            <!-- Date -->
+            <div class="row">
+                <label for="date" class="col-12">
+                    <h5 class="font-weight-bold">Today's Date<strong class="text-danger mx-1">*</strong>
+                </label>
+                <input type="text" id="datepicker" class="form-control my-1" name="todays-date" value="" placeholder="mm-dd-yyyy" required>
+            </div>
+            <!-- Buttons Next -->
+            <div class="text-right my-3">
+                <button type="submit" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- YOUR MEMBERSHIP -->
+        <form id="membership" class="hidden">
+            <h3 class="text-uppercase text-primary">YOUR MEMBERSHIP</h3>
+            <!-- Type Membership -->
+            <div class="row">
+                <label class="font-weight-bold col-12">Select the type of FAST membership you require<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="first-time-applicant" name="membership" value="first-time-applicant" required>
+                    <label class="form-check-label" for="first-time-applicant">FIRST TIME APPLICANT</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="renewal-applicant" name="membership" value="renewal-applicant" required>
+                    <label class="form-check-label" for="renewal-applicant">RENEWAL APPLICANT</label>
+                </div>
+            </div>
+            <!-- Hidden 1 -->
+            <div id="hidden-membership-form" class="row ml-1 hidden">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label class="font-weight-bold">Membership Expiry MONTH<strong class="text-danger mx-1">*</strong></label>
+                        <select id="membership-expiry-month" class="form-control" name="membership-expiry-month" required>
+                            <option selected>Select from options</option>
+                            <option value="january">January</option>
+                            <option value="february">February</option>
+                            <option value="march">March</option>
+                            <option value="april">April</option>
+                            <option value="may">May</option>
+                            <option value="june">June</option>
+                            <option value="july">July</option>
+                            <option value="august">August</option>
+                            <option value="september">September</option>
+                            <option value="octomber">Octomber</option>
+                            <option value="november">November</option>
+                            <option value="december">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="font-weight-bold">Membership Expiry YEAR<strong class="text-danger mx-1">*</strong></label>
+                        <select id="membership-expiry-year" class="form-control" name="membership-expiry-year" required>
+                            <option selected>Select from options</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="text-uppercase font-weight-bold">PASSID<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <p>
+                            <span class="bg-white p-1 description">
+                                Your PASSID is a nine-digit number, which usually
+                                begins with 15, 98 or 99 and can be found on the back of your FAST card.
+                            </span>
+                        </p>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="validationCustom01" name="passid" required>
+                            <div class=" invalid-feedback">This is a required field.</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <img src="./assets/locate-passid.jpg" alt="lacate passid">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you changed your name since you last applied for
+                        membership?<strong class="text-danger mx-1">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="name-change-yes" name="name-change" value="Yes" required>
+                        <label class="form-check-label" for="name-change-yes">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="name-change-no" name="name-change" value="No" required>
+                        <label class="form-check-label" for="name-change-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden 2 -->
+                <div id="hidden-namechange-form" class="row hidden">
+                    <div class="col-12 mb-3">
+                        <label for="last-name" class="font-weight-bold">Last Name used when you last applied<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="last-name" name="last-Name-when-applied" value=""
+                            required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="first-name" class="font-weight-bold">First Name used when you last applied<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="first-name" name="first-Name-when-applied" value=""
+                            required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="middle-name" class="font-weight-bold">Middle Names used when you last applied<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="middle-name" name="middle-Name-when-applied" value=""
+                            required>
+                    </div>
+                </div>
+            </div>
+            <!-- Type Border -->
+            <div class="row">
+                <label class="font-weight-bold col-12">Select the border crossing you wish to apply for<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="us-canada" name="border" value="US-Canada"
+                        required>
+                    <label class="form-check-label" for="us-canada">US-Canada</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="us-mexico" name="border" value="US-Mexico"
+                        required>
+                    <label class="form-check-label" for="us-mexico">US-Mexico</label>
+                </div>
+            </div>
+            <!-- Buttons Next -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- PERSONAL DETAILS -->
+        <form id="personal-details" class="hidden">
+            <h3 class="text-uppercase text-primary">PERSONAL DETAILS</h3>
+            <!-- Name -->
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="last-name-2" class="font-weight-bold">Last Name<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="last-name-2" name="last-name-2" value="" required>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="first-name-2" class="font-weight-bold">First Name<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="first-name-2" name="first-name-2" value="" required>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="middle-name-2" class="font-weight-bold">Middle Names</label>
+                    <input type="text" class="form-control" id="middle-name-2" name="middle-name-2" value="" required>
+                </div>
+            </div>
+            <!-- Membership Type -->
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="font-weight-bold">Have you ever used any other names?<strong
+                            class="text-danger">*</strong></label>
+                    <div class="font-weight-bold">You are legally required to state all other previously used names.
+                    </div>
+                    <div>e.g. Have you got married and adopted your partner's name?</div>
+                    <div>e.g. Have you been in multiple marriages and once used your partner's name?</div>
+                    <div>e.g. Have you changed your name legally from the name you were given at birth?</div>
+                    <div>e.g. Are you known by a different name?</div>
+                </div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="other-names-yes" name="other-names" value="Yes"
+                        required>
+                    <label class="form-check-label" for="other-names-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="other-names-no" name="other-names" value="No"
+                        required>
+                    <label class="form-check-label" for="other-names-no">No</label>
+                </div>
+            </div>
+            <!-- Other Names -->
+            <div id="hidden-secondname-form" class="row hidden">
+                <div class="col-12 mb-3">
+                    <label for="last-name-3" class="font-weight-bold">Previous Last Name<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="last-name-3" name="previous-last-name" value=""
+                        required>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="first-name-3" class="font-weight-bold">Previous First Name<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="first-name-3" name="previous-first-name" value=""
+                        required>
+                </div>
+            </div>
+            <!-- Birth Details -->
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="month-of-birth" class="font-weight-bold">MONTH Of Birth<strong
+                                class="text-danger">*</strong></label>
+                        <select id="month-of-birth" class="form-control" name="month-of-birth" required>
+                            <option selected>Select from options</option>
+                            <option value="january">January</option>
+                            <option value="february">February</option>
+                            <option value="march">March</option>
+                            <option value="april">April</option>
+                            <option value="may">May</option>
+                            <option value="june">June</option>
+                            <option value="july">July</option>
+                            <option value="august">August</option>
+                            <option value="september">September</option>
+                            <option value="octomber">Octomber</option>
+                            <option value="november">November</option>
+                            <option value="december">December</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city-of-birth" class="font-weight-bold">City of Birth<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="city-of-birth" name="city-of-birth" value=""
+                            required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="day-of-birth" class="font-weight-bold">DAY Of Birth<strong
+                                class="text-danger">*</strong></label>
+                        <select id="day-of-birth" class="form-control" name="day-of-birth" required>
+                            <option selected>Select from options</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="state-province-of-birth" class="font-weight-bold">State / Province of Birth<strong
+                                class="text-danger">*</strong></label>
+                        <input type="state-province-of-birth" class="form-control" id="state-province-of-birth" value=""
+                            name="state-province-of-birth" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="year-of-birth" class="font-weight-bold">YEAR Of Birth<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="year-of-birth" name="year-of-birth" value=""
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="country-of-birth" class="font-weight-bold">Country of Birth<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="country-of-birth" name="country-of-birth" value=""
+                            required>
+                    </div>
+                </div>
+            </div>
+            <!-- Gender -->
+            <div class="row">
+                <label class="font-weight-bold col-12">What is your Gender?<strong
+                        class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="male" name="gender" value="Male" required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="female" name="gender" value="Female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+            <!-- Height -->
+            <div class="row">
+                <label class="font-weight-bold col-12">How do you want to record your height?<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="feets-inches" name="height" value="Feet and Inches"
+                        required>
+                    <label class="form-check-label" for="feets-inches">Feet and Inches<strong
+                            class="text-danger">*</strong></label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="meters-centimeters" name="height"
+                        value="Meters and Centimeters" required>
+                    <label class="form-check-label" for="meters-centimeters">Meters and Centimeters<strong
+                            class="text-danger">*</strong></label>
+                </div>
+            </div>
+            <!-- Height record -->
+            <div id="height-record" class="row">
+                <div id="hidden-height-feets-form" class="col-12 mb-3">
+                    <label for="feets" class="font-weight-bold">Height in feet and inches<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="feets" name="height-in-feet-and-inches" required>
+                </div>
+                <div id="hidden-height-meters-form" class="col-12 mb-3 hidden">
+                    <label for="meters" class="font-weight-bold">Height in meters and centimeters<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="meters" name="height-in-meters-and-centimeters"
+                        required>
+                </div>
+            </div>
+            <!-- Eye color & Cell phone -->
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="eye-color" class="font-weight-bold">Eye-color?<strong
+                                class="text-danger">*</strong></label>
+                        <select id="eye-color" class="form-control" name="eye-color" required>
+                            <option selected>Select from options</option>
+                            <option value="black">Black</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="bluish-green">Bluish Green</option>
+                            <option value="brown">Brown</option>
+                            <option value="hazel">Hazel</option>
+                            <option value="red">Red</option>
+                            <option value="grey">Grey</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="cell-phone" class="font-weight-bold">Cell phone<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="cell-phone" name="cell-phone" value="" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Email $ Secondary email-->
+            <div class="row">
+                <!-- First Email -->
+                <div class="col-12 mb-3">
+                    <label for="email" class="font-weight-bold">Email<strong class="text-danger mx-1">*</strong></label>
+                    <input type="email" class="form-control" id="email" name="email" value="" required>
+                </div>
+                <!-- Secondary Email -->
+                <div class="col-12 mb-3">
+                    <label for="secondary-email" class="font-weight-bold">Secondary email</label>
+                    <h6>Optional secondary email to ensure you receive your Trusted Traveler profile.</h6>
+                    <input type="email" class="form-control" id="secondary-email" name="secondary-email" value="">
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- CITIZENSHIP -->
+        <form id="citizenship" class="hidden">
+            <h3 class="text-uppercase text-primary">CITIZENSHIP</h3>
+            <!-- US Citizenship -->
+            <div class="row">
+                <label class="font-weight-bold col-12">Are you a US citizen?<strong
+                        class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="us-citizen-yes" name="us-citizen" value="yes"
+                        required>
+                    <label class="form-check-label" for="us-citizen-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="us-citizen-no" name="us-citizen" value="no"
+                        required>
+                    <label class="form-check-label" for="us-citizen-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden Citizenship 1 -->
+            <div id="hidden-us-citizenship-form" class="row my-4 hidden">
+                <label class="font-weight-bold col-12">Are you a U.S. permanent resident? (Green Card Holder)<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="us-permanent-citizen-yes" value="yes"
+                        name="permanent-resident" required>
+                    <label class="form-check-label" for="us-permanent-citizen-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="us-permanent-citizen-no" value="no"
+                        name="permanent-resident" required>
+                    <label class="form-check-label" for="us-permanent-citizen-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden Citizenship 2 -->
+            <div id="hidden-canada-citizenship-form" class="row my-4 hidden">
+                <label class="font-weight-bold col-12">Are you a citizen of Canada?<strong
+                        class="text-danger mx-1">*</strong>
+                </label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="canadian-citizen-yes" name="canadian-citizen"
+                        value="yes" required>
+                    <label class="form-check-label" for="canadian-citizen-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="canadian-citizen-no" name="canadian-citizen"
+                        value="no" required>
+                    <label class="form-check-label" for="canadian-citizen-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden Citizenship 3 -->
+            <div id="hidden-canada-resident-form" class="row my-4 hidden">
+                <label class="font-weight-bold col-12">Are you a permanent resident of Canada?<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="permanent-canadian-resident-yes" value="no"
+                        name="permanent-canadian-resident" required>
+                    <label class="form-check-label" for="permanent-canadian-resident-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="permanent-canadian-resident-no" value="no"
+                        name="permanent-canadian-resident" required>
+                    <label class="form-check-label" for="permanent-canadian-resident-no">No</label>
+                </div>
+            </div>
+            <!-- Eligibility -->
+            <div class="row ml-1 mb-3">
+                <label class="font-weight-bold">Select one of the following documents to prove your eligibility for
+                    the FAST Canada program<strong class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12">
+                    <input type="radio" class="form-check-input" id="valid-pasport" name="eligibility"
+                        value="a valid passport" required>
+                    <label class="form-check-label" for="valid-pasport">A Valid Passport</label>
+                </div>
+                <div class="form-check col-12">
+                    <input type="radio" class="form-check-input" id="citizenship-certificate" name="eligibility"
+                        value="citizenship certificate" required>
+                    <label class="form-check-label" for="citizenship-certificate">Citizenship
+                        Certificate</label>
+                </div>
+                <div class="form-check col-12">
+                    <input type="radio" class="form-check-input" id="naturalization-certificate" name="eligibility"
+                        value="naturalization certificate" required>
+                    <label class="form-check-label" for="naturalization-certificate">Naturalization
+                        Certificate</label>
+                </div>
+                <div class="form-check col-12">
+                    <input type="radio" class="form-check-input" id="indian-status" name="eligibility"
+                        value="certificate of indian status" required>
+                    <label class="form-check-label" for="indian-status">Certificate of Indian
+                        Status</label>
+                </div>
+                <div class="form-check col-12">
+                    <input type="radio" class="form-check-input" id="birth-certificate" name="eligibility" required>
+                    <label class="form-check-label" for="birth-certificate">Birth Certificate</label>
+                </div>
+                <div class="form-check col-12">
+                    <input type="radio" class="form-check-input" id="canadian-citizen" name="eligibility" required>
+                    <label class="form-check-label" for="canadian-citizen">Certificate of Retention of
+                        Canadian Citizenship</label>
+                </div>
+            </div>
+            <!-- Hidden Eligibility -->
+            <div id="hidden-eligibility-form" class="hidden">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="citizenship-specify" class="font-weight-bold">Specify your citizenship<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="citizenship-specify" name="citizenship" value=""
+                            required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="primary-passport-num" class="font-weight-bold">Primary passport number<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="primary-passport-num" name="primary-passport-number"
+                            value="" required>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="primary-passport-issung-country" class="font-weight-bold">Primary passport issuing
+                            country<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="primary-passport-issung-country"
+                            name="primary-passport-issuing-number" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ln-on-pp" class="font-weight-bold">Last name as it appears on your primary passport
+                            <strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-on-pp"
+                            name="last-name-as-it-appears-on-your-primary-passport" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="fn-on-pp" class="font-weight-bold">First name as it appears on your primary
+                            passport<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="fn-on-pp"
+                            name="first-name-as-it-appears-on-your-primary-passport" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="mn-on-pp" class="font-weight-bold">Middle names as they appear on your primary
+                            passport<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="mn-on-pp"
+                            name="middle-name-as-it-appears-on-your-primary-passport" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="pp-month-issue" class="font-weight-bold mb-4">Primary passport MONTH of Issue<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="pp-month-issue"
+                            name="primary-passport-month-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="pp-day-issue" class="font-weight-bold mb-4">Primary passport DAY of Issue<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="pp-day-issue"
+                            name="primary-passport-day-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="pp-year-issue" class="font-weight-bold mb-4">Primary passport YEAR of Issue</label>
+                        <input type="text" class="form-control mt-2" id="pp-year-issue"
+                            name="primary-passport-year-of-issue" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="pp-month-expiry" class="font-weight-bold">Primary passport MONTH of Expiry<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="pp-month-expiry"
+                            name="primary-passport-year-of-expiry" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="pp-day-expiry" class="font-weight-bold">Primary passport DAY of Expiry<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="pp-day-expiry" name="primary-passport-day-of-expiry"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="pp-year-expiry" class="font-weight-bold">Primary passport YEAR of Expiry<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="pp-year-expiry"
+                            name="primary-passport-year-of-expiry" value="" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Dual Citizenship -->
+            <div class="row">
+                <label class="font-weight-bold col-12">Do you hold dual citizenship?<strong
+                        class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="dual-citizenship-yes" name="dual-citizenship" required>
+                    <label class="form-check-label" for="dual-citizenship-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="dual-citizenship-no" name="dual-citizenship" required>
+                    <label class="form-check-label" for="dual-citizenship-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden Dual Citizenship -->
+            <div id="hidden-dual-citizenship-form" class="hidden">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="sp-number" class="font-weight-bold">Secondary passport number<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="sp-number" name="secondary-passport-number" value=""
+                            required>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="sp-issuing-country" class="font-weight-bold">Secondary passport issuing
+                            country<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="sp-issuing-country"
+                            name="secondary-passport-issuing-country" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="ln-sp" class="font-weight-bold">Last name as it appears on your secondary
+                            passport<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-sp" name="last-name-on-secondary-passport"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="fn-sp" class="font-weight-bold">First name as it appears on your secondary
+                            passport<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="fn-sp" name="first-name-on-secondary-passport"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="mn-sp" class="font-weight-bold">Middle names as they appear on your secondary
+                            passport</label>
+                        <input type="text" class="form-control" id="mn-sp" name="middle-name-on-secondary-passport"
+                            value="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="sp-month-issue" class="font-weight-bold">Secondary passport MONTH of Issue<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="sp-month-issue"
+                            name="seondary-passport-month-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="sp-day-issue" class="font-weight-bold mb-4">Secondary passport DAY of Issue<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="sp-day-issue"
+                            name="seondary-passport-day-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="sp-year-issue" class="font-weight-bold mb-4">Secondary passport YEAR of
+                            Issue</label>
+                        <input type="text" class="form-control mt-2" id="sp-year-issue"
+                            name="seondary-passport-year-of-issue" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="sp-month-expiry" class="font-weight-bold">Secondary passport MONTH of Expiry<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="sp-month-expiry"
+                            name="seondary-passport-month-of-expiry" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="sp-day-expiry" class="font-weight-bold">Secondary passport DAY of Expiry<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="sp-day-expiry"
+                            name="seondary-passport-day-of-expiry" value="" required>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="sp-year-expiry" class="font-weight-bold">Secondary passport YEAR of Expiry<strong
+                                class="text-danger">*</strong></label>
+                        <select id="sp-year-expiry" class="form-control" required>
+                            <option selected>Select from options</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                            <option value="2036">2036</option>
+                            <option value="2037">2037</option>
+                            <option value="2038">2038</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- viza -->
+            <div class="row">
+                <label class="font-weight-bold col-12">Do you hold a visa (Including ESTA) to the United States?<strong
+                        class="text-danger mx-1">*</strong></label>
+                <div class="ml-3">If you are not a US citizen or permanent resident or a Canadian citizen, you must have
+                    a visa to live or work in the USA.</div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="visa-hold-yes" name="visa-hold" required>
+                    <label class="form-check-label" for="visa-hold-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="visa-hold-no" name="visa-hold" required>
+                    <label class="form-check-label" for="visa-hold-no">No</label>
+                </div>
+            </div>
+            <!-- Buttons Next -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+            <p class="text-danger font-weight-bold pb-3"><u>You must take all documentation to your interview.</u></p>
+        </form>
+
+        <!-- CITIZENSHIP PART 2 -->
+        <form id="citizenship-2" class="hidden">
+            <h3 class="text-uppercase text-primary">CITIZENSHIP PART 2</h3>
+            <!-- Citizenship Certificate Number -->
+            <div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="citizenship-certificate-number" class="font-weight-bold">Citizenship Certificate
+                            Number<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="citizenship-certificate-number"
+                            name="citizenship-certificate-number" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ln-on-cc" class="font-weight-bold">Last name as it appears on your citizenship
+                            certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-on-cc"
+                            name="last-name-on-citizenship-certificate" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="fn-on-cc" class="font-weight-bold">First name as it appears on your citizenship
+                            certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="fn-on-cc"
+                            name="first-name-on-citizenship-certificate" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="mn-on-cc" class="font-weight-bold">Middle names as they appear on your citizenship
+                            certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="mn-on-cc"
+                            name="middle-name-on-citizenship-certificate" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="cc-month-issue" class="font-weight-bold">Citizenship Certificate MONTH of
+                            Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="cc-month-issue" name="citizenship-month-of-issue"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="cc-day-issue" class="font-weight-bold">Citizenship Certificate DAY of Issue<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="cc-day-issue" name="citizenship-day-of-issue"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="cc-year-issue" class="font-weight-bold">Citizenship Certificate YEAR of Issue<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="cc-year-issue" name="citizenship-year-of-issue"
+                            value="" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Naturalization Certificate Number -->
+            <div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="naturalization-certificate-number" class="font-weight-bold">Naturalization
+                            Certificate Number<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="naturalization-certificate-number"
+                            name="naturalization-certificate-number" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ln-on-nc" class="font-weight-bold">Last name as it appears on your Naturalization
+                            Certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-on-nc"
+                            name="last-name-on-naturalization-certificate" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="fn-on-nc" class="font-weight-bold">First name as it appears on your Naturalization
+                            Certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="fn-on-nc"
+                            name="first-name-on-naturalization-certificate" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="mn-on-nc" class="font-weight-bold">Middle names as they appear on your
+                            Naturalization Certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="mn-on-nc"
+                            name="middle-name-on-naturalization-certificate" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="nc-month-issue" class="font-weight-bold">Naturalization Certificate MONTH of
+                            Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="nc-month-issue" name="naturalization-month-of-issue"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="nc-day-issue" class="font-weight-bold mb-4">Naturalization Certificate DAY of
+                            Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="nc-day-issue" name="naturalization-day-of-issue"
+                            value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="nc-year-issue" class="font-weight-bold mb-4">Naturalization Certificate YEAR of
+                            Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="nc-year-issue" name="naturalization-year-of-issue"
+                            value="" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Certificate of Indian Status Certificate Number -->
+            <div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="indian-certificate-number" class="font-weight-bold">Certificate of Indian Status
+                            Certificate Number<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="indian-certificate-number"
+                            name="certificate-of-indian-status-number" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ln-on-indian-cc" class="font-weight-bold">Last name as it appears on your
+                            Certificate of Indian Status<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-on-indian-cc"
+                            name="last-name-oncertificate-of-indian-status" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="fn-on-indian-cc" class="font-weight-bold">First name as it appears on your
+                            Certificate of Indian Status<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="fn-on-indian-cc"
+                            name="first-name-oncertificate-of-indian-status" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="mn-on-indian-cc" class="font-weight-bold">Middle names as they appear on your
+                            Certificate of Indian Status<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="mn-on-indian-cc"
+                            name="middle-name-oncertificate-of-indian-status" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="indian-cc-month-issue" class="font-weight-bold">Certificate of Indian Status MONTH
+                            of Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="indian-cc-month-issue"
+                            name="certificate-of-indian-status-month-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="indian-cc-day-issue" class="font-weight-bold mb-4">Certificate of Indian Status DAY of
+                            Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="indian-cc-day-issue"
+                            name="certificate-of-indian-status-day-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="indian-cc-year-issue" class="font-weight-bold">Certificate of Indian Status YEAR of
+                            Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="indian-cc-year-issue"
+                            name="certificate-of-indian-status-year-of-issue" value="" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Birth Certificate Number -->
+            <div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="birth-certificate-number" class="font-weight-bold">Birth Certificate Number<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="birth-certificate-number"
+                            name="birth-certificate-number" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="birth-certificate-country" class="font-weight-bold">Birth Certificate Issuing
+                            Country<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="birth-certificate-country"
+                            name="birth-certificate-issuing-country" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="birth-certificate-state-province" class="font-weight-bold">Birth Certificate Issuing
+                            State / Province<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="birth-certificate-state-province"
+                            name="birth-certificate-issuing-state-province" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ln-on-bc" class="font-weight-bold">Last Name as it appears on your Birth
+                            Certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-on-bc" name="last-name-on-birth-certificate"
+                            value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="fn-on-bc" class="font-weight-bold mb-4">First Name as it appears on your Birth
+                            Certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="fn-on-bc"
+                            name="first-name-on-birth-certificate" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="mn-on-bc" class="font-weight-bold mb-4">Middle Names as they appear on your Birth
+                            Certificate<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="mn-on-bc"
+                            name="middle-name-on-birth-certificate" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="bc-month-issue" class="font-weight-bold mb-4">Birth Certificate MONTH of Issue<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="bc-month-issue"
+                            name="birth-certificate-month-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="bc-day-issue" class="font-weight-bold mb-4">Birth Certificate DAY of Issue<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="bc-day-issue"
+                            name="birth-certificate-day-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="bc-year-issue" class="font-weight-bold mb-4">Birth Certificate YEAR of Issue<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control mt-2" id="bc-year-issue"
+                            name="birth-certificate-year-of-issue" value="" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Certificate of Retention of Canadian Citizenship Number -->
+            <div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="retention-certificate-number" class="font-weight-bold">Certificate of Retention of
+                            Canadian Citizenship Number<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="retention-certificate-number"
+                            name="retention-certificate-number" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ln-on-cr" class="font-weight-bold">Last Name as it appears on your Certificate of
+                            Retention of Canadian Citizenship<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ln-on-cr"
+                            name="last-name-on-certificate-of-canadian-citizenship" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="fn-on-cr" class="font-weight-bold">First Name as it appears on your Certificate of
+                            Retention of Canadian Citizenship<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="fn-on-cr"
+                            name="first-name-on-certificate-of-canadian-citizenship" value="" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="mn-on-cr" class="font-weight-bold">Middle Names as they appear on your Certificate
+                            of Retention of Canadian Citizenship Copy<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="mn-on-cr"
+                            name="middle-name-on-certificate-of-canadian-citizenship" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="cr-canadian-month-issue" class="font-weight-bold">Certificate of Retention of Canadian
+                            Citizenship MONTH of Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="cr-canadian-month-issue"
+                            name="certificate-of-canadian-citizenship-month-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="cr-canadian-day-issue" class="font-weight-bold">Certificate of Retention of Canadian
+                            Citizenship DAY of Issue<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="cr-canadian-day-issue"
+                            name="certificate-of-canadian-citizenship-day-of-issue" value="" required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="cr-canadian-year-issue" class="font-weight-bold">Certificate of Retention of Canadian
+                            Citizenship YEAR of Issue Copy<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="cr-canadian-year-issue"
+                            name="certificate-of-canadian-citizenship-year-of-issue" value="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- DRIVER DETAILS -->
+        <form id="driver-details" class="hidden">
+            <h3 class="text-uppercase text-primary">DRIVER DETAILS</h3>
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="driver-license-number" class="font-weight-bold">Driver's license number<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="driver-license-number" name="drivers-license-number"
+                        value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="dl-month-expiry" class="font-weight-bold">Driver license MONTH of expiry<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="dl-month-expiry" name="drivers-license-month-of-expiry"
+                        value="" required>
+                </div>
+                <div class="col mb-3">
+                    <label for="dl-date-expiry" class="font-weight-bold">Driver license DATE of expiry<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="dl-date-expiry" name="drivers-license-date-of-expiry"
+                        value="" required>
+                </div>
+                <div class="col mb-3">
+                    <label for="dl-year-expiry" class="font-weight-bold">Driver license YEAR of expiry<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="dl-year-expiry" name="drivers-license-year-of-expiry"
+                        value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="dl-state-issue" class="font-weight-bold">Drivers license state / province of
+                        issue<strong class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="dl-state-issue"
+                        name="drivers-license-state-provinceof-issue" value="" required>
+                </div>
+                <div class="col mb-3">
+                    <label for="dl-country-issue" class="font-weight-bold">Driver license issuing country<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="dl-country-issue" name="drivers-license-country-issue"
+                        value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="ln-dl" class="font-weight-bold">Last name as it appears on your drivers license<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="ln-dl" name="last-name-on-drivers-license" value=""
+                        required>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="fn-dl" class="font-weight-bold">First name as it appears on your drivers license<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="fn-dl" name="first-name-on-drivers-license" value=""
+                        required>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="mn-dl" class="font-weight-bold">Middle names as they appear on your drivers
+                        license</label>
+                    <input type="text" class="form-control" id="mn-dl" name="middle-name-on-drivers-license" value="">
+                </div>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Is this an enhanced security driver's license?<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="enchanced-sdl" name="enchanced-sdl" required>
+                    <label class="form-check-label" for="enchanced-sdl">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="not-enchanced-sdl" name="enchanced-sdl" required>
+                    <label class="form-check-label" for="not-enchanced-sdl">No</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Is this a commercial driver's license?<strong
+                        class="text-danger">*</strong></label>
+                <div class="col">A commercial driver's license is a driver's license required to operate large, heavy,
+                    or placarded
+                    hazardous material vehicles in commerce.</div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="commercial-dl-yes" name="commercial-dl" required>
+                    <label class="form-check-label" for="commercial-dl-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="commercial-dl-no" name="commercial-dl" required>
+                    <label class="form-check-label" for="commercial-dl-no">No</label>
+                </div>
+                <p id="hidden-comercial-dr-license-warning" class="col-12 text-danger font-weight-bold pb-3 hidden">
+                    <u>You cannot apply for this program if you don’t have a valid commercial drivers license!</u>
+                </p>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Is there a HAZMAT (hazardous material) endorsement on the
+                    license?<strong class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="hazmat-dl" name="hazmat-dl" required>
+                    <label class="form-check-label" for="hazmat-dl">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="hazmat-dl-no" name="hazmat-dl" required>
+                    <label class="form-check-label" for="hazmat-dl-no">No</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- CURRENT ADDRESS -->
+        <form id="current-address" class="hidden">
+            <h3 class="text-uppercase text-primary">CURRENT ADDRESS</h3>
+            <div class="row">
+                <label class="font-weight-bold col-12">Do you live in the USA?<strong
+                        class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="us-live" name="us-live" required>
+                    <label class="form-check-label" for="us-live">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="us-live-no" name="us-live" required>
+                    <label class="form-check-label" for="us-live-no">No</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="start-month" class="font-weight-bold">MONTH you started living at your present
+                        address<strong class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="start-month"
+                        name="month-start-living-at-present-address" value="" required>
+                </div>
+                <div class="col mb-3">
+                    <label for="start-year" class="font-weight-bold">YEAR you started living at your present
+                        address<strong class="text-danger mx-1">*</strong></label>
+                    <input type="text" class="form-control" id="start-year" name="year-start-living-at-present-address"
+                        value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label for="present-address" class="font-weight-bold">Present address<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="present-address" name="present-address" value=""
+                        required>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="present-address-2" class="font-weight-bold">Present address #2</label>
+                    <input type="text" class="form-control" id="present-address-2" name="present-address-2" value=""
+                        required>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="present-city" class="font-weight-bold">Present city<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="present-city" name="present-city" value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="state-province" class="font-weight-bold">Present state / province<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="state-province" name="present-state-province" value=""
+                        required>
+                </div>
+                <div class="col mb-3">
+                    <label for="zip-postal-code" class="font-weight-bold">Present Zip / postal code<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="zip-postal-code" name="present-zip-postal-code" value=""
+                        required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="present-country" class="font-weight-bold">Present country<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="present-country" name="present-country" value=""
+                        required>
+                </div>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Is this your mailing address?<strong
+                        class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="mailing-address-yes" name="is-mailing-address" required>
+                    <label class="form-check-label" for="mailing-address-yes">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="not-mailing-address" name="is-mailing-address"
+                        required>
+                    <label class="form-check-label" for="not-mailing-address">No</label>
+                </div>
+            </div>
+            <!-- Hidden 1 -->
+            <div id="hidden-mailing-address-form" class="hidden">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="ma-start-month" class="font-weight-bold">MONTH you started using this mailing
+                            address<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ma-start-month"
+                            name="month-start-useing-this-email-addres" value="" required>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="ma-start-year" class="font-weight-bold">YEAR you started using this mailing
+                            address<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ma-start-year"
+                            name="year-start-useing-this-email-addres" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <label for="mailing-address-data" class="font-weight-bold">Mailing address<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="mailing-address-data" name="mailing-address-data" value=""
+                            required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="mailing-address-2" class="font-weight-bold">Mailing address #2</label>
+                        <input type="text" class="form-control" id="mailing-address-2" name="mailing-address-data-2" value=""
+                            required>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="mailing-city" class="font-weight-bold">Mailing address city<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="mailing-city" name="mailing-address-city" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="ma-state-province" class="font-weight-bold">Mailing address state / province<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="ma-state-province"
+                            name="mailing-address-state-province" value="" required>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="ma-zip-postal-code" class="font-weight-bold">Mailing address Zip / postal
+                            code<strong class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="ma-zip-postal-code"
+                            name="mailing-address-zip-postal-code" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="ma-country" class="font-weight-bold">Mailing address country<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="ma-country" name="mailing-address-country" value=""
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you lived at your present address for five years or
+                    more?<strong class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="five-years" name="living-time" required>
+                    <label class="form-check-label" for="five-years">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="under-five-years" name="living-time" required>
+                    <label class="form-check-label" for="under-five-years">No</label>
+                </div>
+            </div>
+            <!-- Hidden 2 -->
+            <p id="hidden-live-hystory" class="text-danger font-weight-bold hidden"><u>You must provide a complete five
+                    year address history on the next page.</u></p>
+            <!-- Buttons Next -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- CURRENT EMPLOYMENT -->
+        <form id="current-employment" class="hidden">
+            <h3 class="text-uppercase text-primary">CURRENT EMPLOYMENT</h3>
+            <div>You will NOT be penalised or denied membership if you are unemployed. All disclosures about your work
+                status are confidential.</div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="employee-status" class="font-weight-bold">What is your current employment status?<strong
+                            class="text-danger">*</strong></label>
+                    <select id="employee-status" class="form-control" name="current-employment-status" required>
+                        <option selected>Select from options</option>
+                        <option value="currrently-employed-including-part-time-work">Currrently Employed (including part
+                            time work)</option>
+                        <option value="currrently-unemployed">Currrently Unemployed</option>
+                        <option value="currrently-self-employed">Currrently Self Employed</option>
+                        <option value="currrently-retired">Currrently Retired</option>
+                        <option value="currrently-child-under-18-years-old">Currrently Child (under 18 years old)
+                        </option>
+                        <option value="currrently-student-18-years-old-or-over">Currrently Student (18 years old or
+                            over)</option>
+                        <option value="currrently-homemaker">Currrently Homemaker</option>
+                        <option value="currrently-between-jobs">Currrently Between Jobs</option>
+                        <option value="currrently-not-working">Currrently Not Working</option>
+                        <option value="currrently-housewife">Currrently Housewife</option>
+                        <option value="currrently-unpaid-carer">Currrently Unpaid Carer</option>
+                        <option value="currrently-looking-after-kids">Currrently Looking After Kids</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="current-work-status-month" class="font-weight-bold">MONTH you started your current work
+                        status<strong class="text-danger">*</strong></label>
+                    <select id="current-work-status-month" class="form-control" name="month-start-current-work-status" required>
+                        <option selected>Select from options</option>
+                        <option value="currrently-employed-including-part-time-work">Currrently Employed (including part
+                            time work)</option>
+                        <option value="currrently-unemployed">Currrently Unemployed</option>
+                        <option value="currrently-self-employed">Currrently Self Employed</option>
+                        <option value="currrently-retired">Currrently Retired</option>
+                        <option value="currrently-child-under-18-years-old">Currrently Child (under 18 years old)
+                        </option>
+                        <option value="currrently-student-18-years-old-or-over">Currrently Student (18 years old or
+                            over)</option>
+                        <option value="currrently-homemaker">Currrently Homemaker</option>
+                        <option value="currrently-between-jobs">Currrently Between Jobs</option>
+                        <option value="currrently-not-working">Currrently Not Working</option>
+                        <option value="currrently-housewife">Currrently Housewife</option>
+                        <option value="currrently-unpaid-carer">Currrently Unpaid Carer</option>
+                        <option value="currrently-looking-after-kids">Currrently Looking After Kids</option>
+                    </select>
+                </div>
+                <div class="col mb-3">
+                    <label for="current-work-status-year" class="font-weight-bold">YEAR you started your current work
+                        status<strong class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="current-work-status-year"
+                        name="year-start-current-work-status" value="" required>
+                </div>
+            </div>
+            <!-- Hidden 1 -->
+            <div id="hidden-employment-form" class="hidden">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="job-title-ocupation" class="font-weight-bold">Job Title / Occupation<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="job-title-ocupation" name="job-title" value=""
+                            required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="employers-name" class="font-weight-bold">Employer's Name<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="employers-name" name="employers-name" value=""
+                            required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="employers-address" class="font-weight-bold">Employer's Address<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="employers-address" name="employers-address" value=""
+                            required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="employers-address-2" class="font-weight-bold">Employer's Address #2<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="employers-address-2" name="employers-address-2"
+                            value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="employers-city" class="font-weight-bold">Employer's City<strong
+                                class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="employers-city" name="employers-city" value=""
+                            required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="employers-state-province" class="font-weight-bold">Employer's State /
+                            Province<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="employers-state-province"
+                            name="employers-state-province" value="" required>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="employers-zip-postal-code" class="font-weight-bold">Employer's Zip / Postal
+                            Code<strong class="text-danger">*</strong></label>
+                        <input type="text" class="form-control" id="employers-zip-postal-code"
+                            name="employers-zip-postal-code" value="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="employers-country" class="font-weight-bold">Employer's Country<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="employers-country" name="employers-country" value=""
+                            required>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="employers-phone" class="font-weight-bold">Employer's Phone<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <input type="text" class="form-control" id="employers-phone" name="employers-phone" value=""
+                            required>
+                    </div>
+                </div>
+            </div>
+            <!-- Work status -->
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you had the same work status for the last five years?<strong
+                        class="text-danger">*</strong></label>
+                <div class="col-12">Back to January 2015?</div>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="five-year-work-status" name="five-year-work-status"
+                        required>
+                    <label class="form-check-label" for="five-year-work-status">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="five-year-work-status-no"
+                        name="five-year-work-status" required>
+                    <label class="form-check-label" for="five-year-work-status-no">No</label>
+                </div>
+            </div>
+            <!-- Missing from work -->
+            <div id="five-year-missing-works-status" class="row hidden">
+                <label class="font-weight-bold col-12">Do you consent that any months missing from your employment
+                    history in
+                    the last 5 years will count as unemployed?<strong class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="five-year-missing-work"
+                        name="five-year-missing-work" required>
+                    <label class="form-check-label" for="five-year-missing-work">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="five-year-missing-work-no"
+                        name="five-year-missing-work" required>
+                    <label class="form-check-label" for="five-year-missing-work-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden Warning 1 -->
+            <div id="hidden-warning-work-status" class="hidden">
+                <p class="text-danger font-weight-bold"><u>You must provide a five year employment status history.
+                        Please list all paid full-time and part-time jobs on the next page. You will not be penalized
+                        for periods of unemployment.</u></p>
+            </div>
+            <!-- Hidden Wrning 2 -->
+            <div id="hidden-warning-missing-work-status" class="hidden">
+                <p class="text-danger font-weight-bold"><u>Check your employment history to ensure that you have not
+                        left any gaps between January 2015 and the present date. Your application will be delayed if you
+                        have left ANY gaps.</u></p>
+            </div>
+            <!-- Buttons Next -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- TRAVEL HISTORY -->
+        <form id="travel-hystory" class="hidden">
+            <h3 class="text-uppercase text-primary">TRAVEL HISTORY</h3>
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you traveled to another country excluding USA, Canada or
+                    Mexico
+                    in the last five years?<strong class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="travel-abroad" name="travel-abroad" required>
+                    <label class="form-check-label" for="travel-abroad">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="travel-abroad-no" name="travel-abroad" required>
+                    <label class="form-check-label" for="travel-abroad-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden -->
+            <div id="hidden-travel-abroad-form" class="hidden">
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited the Caribbean Islands in the last 5
+                        years?<strong class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="caribbean-visit" name="caribbean-visit"
+                            required>
+                        <label class="form-check-label" for="caribbean-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="caribbean-visit-no" name="caribbean-visit"
+                            required>
+                        <label class="form-check-label" for="caribbean-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 1-->
+                <div id="hidden-carribean-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Antigua" req>
+                        <label class="form-check-label" for="Antigua">
+                            Antigua and Barbuda
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="barbados">
+                        <label class="form-check-label" for="barbados">
+                            Barbados
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="cuba">
+                        <label class="form-check-label" for="cuba">
+                            Cuba
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="dominica">
+                        <label class="form-check-label" for="dominica">
+                            Dominica
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="dominicanR">
+                        <label class="form-check-label" for="dominicanR">
+                            Dominican Republic
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="guadalupe">
+                        <label class="form-check-label" for="guadalupe">
+                            Guadeloupe (France)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="martinique">
+                        <label class="form-check-label" for="martinique">
+                            Martinique (France)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="saintBarthelemy">
+                        <label class="form-check-label" for="saintBarthelemy">
+                            Saint Barthelemy (France)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="saintMartin">
+                        <label class="form-check-label" for="saintMartin">
+                            Saint Martin (France)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="grenada">
+                        <label class="form-check-label" for="grenada">
+                            Grenada
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="haiti">
+                        <label class="form-check-label" for="haiti">
+                            Haiti
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="jamaica">
+                        <label class="form-check-label" for="jamaica">
+                            Jamaica
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="aruba">
+                        <label class="form-check-label" for="aruba">
+                            Aruba (Netherlands)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="caracao">
+                        <label class="form-check-label" for="caracao">
+                            Curaçao (Netherlands)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="caribbeanN">
+                        <label class="form-check-label" for="caribbeanN"">
+                                    Caribbean Netherlands
+                                </label>
+                            </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="sintMaarten-">
+                        <label class="form-check-label" for="sintMaarten-">
+                            Sint Maarten (Netherlands)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="saintKittsNevis">
+                        <label class="form-check-label" for="saintKittsNevis">
+                            Saint Kitts and Nevis
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="saintLucia">
+                        <label class="form-check-label" for="saintLucia">
+                            Saint Lucia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="saintVincentAndTheGrenadines">
+                        <label class="form-check-label" for="saintVincentAndTheGrenadines">
+                            Saint Vincent and the Grenadines
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="trinidadAndTobago">
+                        <label class="form-check-label" for="trinidadAndTobago">
+                            Trinidad and Tobago
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="anguillaUK">
+                        <label class="form-check-label" for="anguillaUK">
+                            Anguilla (UK)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="britishVirginIslands">
+                        <label class="form-check-label" for="britishVirginIslands">
+                            British Virgin Islands (UK)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="caymanIslands">
+                        <label class="form-check-label" for="caymanIslands">
+                            Cayman Islands (UK)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="montserrat">
+                        <label class="form-check-label" for="montserrat">
+                            Montserrat (UK)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="puertoRico">
+                        <label class="form-check-label" for="puertoRico">
+                            Puerto Rico (USA)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="unitedStatesVirginIslands">
+                        <label class="form-check-label" for="unitedStatesVirginIslands">
+                            United States Virgin Islands (USA)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="theBahamas">
+                        <label class="form-check-label" for="theBahamas">
+                            The Bahamas
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="turksAndCaicosIslands">
+                        <label class="form-check-label" for="turksAndCaicosIslands">
+                            Turks and Caicos Islands
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited Europe in the last 5 years?<strong
+                            class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="eu-visit" name="eu-visit" required>
+                        <label class="form-check-label" for="eu-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="eu-visit-no" name="eu-visit" required>
+                        <label class="form-check-label" for="eu-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 2-->
+                <div id="hidden-eu-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="albania">
+                        <label class="form-check-label" for="albania">
+                            Albania (former country of Yugoslavia)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="andorra">
+                        <label class="form-check-label" for="andorra">
+                            Andorra
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="austria">
+                        <label class="form-check-label" for="austria">
+                            Austria
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="belarus">
+                        <label class="form-check-label" for="belarus">
+                            Belarus
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="belgium">
+                        <label class="form-check-label" for="belgium">
+                            Belgium
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="bH">
+                        <label class="form-check-label" for="bH">
+                            Bosnia and Herzegovina (former country of Yugoslavia)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="bulgaria">
+                        <label class="form-check-label" for="bulgaria">
+                            Bulgaria
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="croatia">
+                        <label class="form-check-label" for="croatia">
+                            Croatia (former country of Yugoslavia)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Cyprus">
+                        <label class="form-check-label" for="Cyprus">
+                            Cyprus
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="czechia">
+                        <label class="form-check-label" for="czechia">
+                            Czechia (Czech Republic)
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited the Middle East in the last 5 years?<strong
+                            class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="middle-east-visit" name="middle-east-visit"
+                            required>
+                        <label class="form-check-label" for="middle-east-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="middle-east-visit-no" name="middle-east-visit"
+                            required>
+                        <label class="form-check-label" for="middle-east-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 3-->
+                <div id="hidden-middle-east-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="bahrain">
+                        <label class="form-check-label" for="bahrain">
+                            Bahrain
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="iran">
+                        <label class="form-check-label" for="iran">
+                            Iran
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="iraq">
+                        <label class="form-check-label" for="iraq">
+                            Iraq
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="israel">
+                        <label class="form-check-label" for="israel">
+                            Israel
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="jordan">
+                        <label class="form-check-label" for="jordan">
+                            Jordan
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="kuwait">
+                        <label class="form-check-label" for="kuwait">
+                            Kuwait
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="lebanon">
+                        <label class="form-check-label" for="lebanon">
+                            Lebanon
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="oman">
+                        <label class="form-check-label" for="oman">
+                            Oman
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="palestine">
+                        <label class="form-check-label" for="palestine">
+                            Palestine
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="qatar">
+                        <label class="form-check-label" for="qatar">
+                            Qatar
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="saudiArabia">
+                        <label class="form-check-label" for="saudiArabia">
+                            Saudi Arabia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="syria">
+                        <label class="form-check-label" for="syria">
+                            Syria
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="uae">
+                        <label class="form-check-label" for="uae">
+                            United Arab Emirates (UAE)
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited Central or South America in the last 5
+                        years?<strong class="text-danger mx-1">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="south-america-visit" name="south-america-visit"
+                            required>
+                        <label class="form-check-label" for="south-america-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="south-america-visit-no"
+                            name="south-america-visit" required>
+                        <label class="form-check-label" for="south-america-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 4-->
+                <div id="hidden-south-america-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Argentina">
+                        <label class="form-check-label" for="Argentina">
+                            Argentina
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Bolivia">
+                        <label class="form-check-label" for="Bolivia">
+                            Bolivia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Brazil">
+                        <label class="form-check-label" for="Brazil">
+                            Brazil
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Chile">
+                        <label class="form-check-label" for="Chile">
+                            Chile
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Colombia">
+                        <label class="form-check-label" for="Colombia">
+                            Colombia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Ecuador">
+                        <label class="form-check-label" for="Ecuador">
+                            Ecuador
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="falklandIslands">
+                        <label class="form-check-label" for="falklandIslands">
+                            Falkland Islands (UK)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="frenchGuiana">
+                        <label class="form-check-label" for="frenchGuiana">
+                            French Guiana (France)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="guyana">
+                        <label class="form-check-label" for="guyana">
+                            Guyana
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="honduras">
+                        <label class="form-check-label" for="honduras">
+                            Honduras
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="nicaragua">
+                        <label class="form-check-label" for="nicaragua">
+                            Nicaragua
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="panama">
+                        <label class="form-check-label" for="panama">
+                            Panama
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="paraguay">
+                        <label class="form-check-label" for="paraguay">
+                            Paraguay
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited Australia and Oceania in the last 5
+                        years?<strong class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="australia-visit" name="australia-visit"
+                            required>
+                        <label class="form-check-label" for="australia-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="australia-visit-no" name="australia-visit"
+                            required>
+                        <label class="form-check-label" for="australia-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 5-->
+                <div id="hidden-australia-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="australia">
+                        <label class="form-check-label" for="australia">
+                            Australia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="americanSamoa">
+                        <label class="form-check-label" for="americanSamoa">
+                            American Samoa (USA)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="cookIslands">
+                        <label class="form-check-label" for="cookIslands">
+                            Cook Islands (New Zealand)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="fiji">
+                        <label class="form-check-label" for="fiji">
+                            Fiji
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="frenchPolynesia">
+                        <label class="form-check-label" for="frenchPolynesia">
+                            French Polynesia (France)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="guam">
+                        <label class="form-check-label" for="guam">
+                            Guam (USA)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="kiribati">
+                        <label class="form-check-label" for="kiribati">
+                            Kiribati
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="marshallIslands">
+                        <label class="form-check-label" for="marshallIslands">
+                            Marshall Islands
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="micronesia">
+                        <label class="form-check-label" for="micronesia">
+                            Micronesia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="nauru">
+                        <label class="form-check-label" for="nauru">
+                            Nauru
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited Asia in the last 5 years?<strong
+                            class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="asia-visit" name="asia-visit" required>
+                        <label class="form-check-label" for="asia-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="asia-visit-no" name="asia-visit" required>
+                        <label class="form-check-label" for="asia-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 6-->
+                <div id="hidden-asia-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="afghanistan">
+                        <label class="form-check-label" for="afghanistan">
+                            Afghanistan
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="armenia">
+                        <label class="form-check-label" for="armenia">
+                            Armenia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="azerbaijan">
+                        <label class="form-check-label" for="azerbaijan">
+                            Azerbaijan
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="bangladesh">
+                        <label class="form-check-label" for="bangladesh">
+                            Bangladesh
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="bhutan">
+                        <label class="form-check-label" for="bhutan">
+                            Bhutan
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="brunei">
+                        <label class="form-check-label" for="brunei">
+                            Brunei
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="cambodia">
+                        <label class="form-check-label" for="cambodia">
+                            Cambodia
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="china">
+                        <label class="form-check-label" for="china">
+                            China
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="india">
+                        <label class="form-check-label" for="india">
+                            India
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="indonesia">
+                        <label class="form-check-label" for="indonesia">
+                            Indonesia
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Have you visited Africa in the last 5 years?<strong
+                            class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="africa-visit" name="africa-visit" required>
+                        <label class="form-check-label" for="africa-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="africa-visit-no" name="africa-visit" required>
+                        <label class="form-check-label" for="africa-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Checkboxes 7-->
+                <div id="hidden-africa-form" class="row hidden checkbox">
+                    <label class="font-weight-bold col-12">Check the islands you visited<strong
+                            class="text-danger mx-1">*</strong></label>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="Algeria">
+                        <label class="form-check-label" for="algeria">
+                            Algeria
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="angola">
+                        <label class="form-check-label" for="angola">
+                            Angola
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="benin">
+                        <label class="form-check-label" for="benin">
+                            Benin
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="botswana">
+                        <label class="form-check-label" for="botswana">
+                            Botswana
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="burkinaFaso">
+                        <label class="form-check-label" for="burkinaFaso">
+                            Burkina Faso
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="burundi">
+                        <label class="form-check-label" for="burundi">
+                            Burundi
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="caboVerde">
+                        <label class="form-check-label" for="cambodia">
+                            Cabo Verde (Cape Verde)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="cameroon">
+                        <label class="form-check-label" for="cameroon">
+                            Cameroon
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="centralAfricanRepublic">
+                        <label class="form-check-label" for="centralAfricanRepublic">
+                            Central African Republic (CAR)
+                        </label>
+                    </div>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="" id="zimbabwe">
+                        <label class="form-check-label" for="zimbabwe">
+                            Zimbabwe
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="font-weight-bold col-12">Are there any countries (excluding USA, Canada and Mexico)
+                        that
+                        you have visited in the last 5 years that are not included in this list?<strong
+                            class="text-danger">*</strong></label>
+                    <div class="form-check col-12 ml-3">
+                        <input type="radio" class="form-check-input" id="other-visit" name="other-visit" required>
+                        <label class="form-check-label" for="other-visit">Yes</label>
+                    </div>
+                    <div class="form-check col-12 mb-3 ml-3">
+                        <input type="radio" class="form-check-input" id="other-visit-no" name="other-visit" required>
+                        <label class="form-check-label" for="other-visit-no">No</label>
+                    </div>
+                </div>
+                <!-- Hidden Textarea 8-->
+                <div id="hidden-other-form" class="row hidden">
+                    <div class="form-group col-12 mb-4" id="countries">
+                        <label class="font-weight-bold w-100">List all of the countries here<strong
+                                class="text-danger mx-1">*</strong></label>
+                        <textarea class="form-control" id="listCountries" name="listCountries" value="" rows="5"
+                            required></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons Next -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- SECURITY QUESTION -->
+        <form id="security" class="hidden">
+            <h3 class="text-uppercase text-primary">SECURITY QUESTION</h3>
+            <p class="font-weight-bold">If you answer 'Yes' to any of the questions below you must take court documents
+                /
+                pardons or any other documentation relating to this to your interview.</p>
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you ever been convicted of an offense in any country?<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="offense-in-any-country"
+                        name="offense-in-any-country" required>
+                    <label class="form-check-label" for="offense-in-any-country">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="offense-in-any-country-no"
+                        name="offense-in-any-country" required>
+                    <label class="form-check-label" for="offense-in-any-country-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden textarea 1 -->
+            <div id="hidden-offense-textarea" class="row hidden">
+                <label class="font-weight-bold col-12">Give exact details of your criminal conviction(s)<strong
+                        class="text-danger">*</strong>
+                    <textarea class="w-100" rows="5" style="resize: none;" required></textarea>
+                </label>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you ever received a waiver of inadmissibility to the U.S.
+                    from a
+                    U.S. government agency?<strong class="text-danger mx-1">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="waiver-of-inadmissibility"
+                        name="waiver-of-inadmissibility" required>
+                    <label class="form-check-label" for="waiver-of-inadmissibility">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="waiver-of-inadmissibility-no"
+                        name="waiver-of-inadmissibility" required>
+                    <label class="form-check-label" for="waiver-of-inadmissibility-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden textarea 2 -->
+            <div id="hidden-waiver-textarea" class="row hidden">
+                <label class="font-weight-bold col-12">Give exact details of your waiver of inadmissibility to the
+                    U.S.<strong class="text-danger">*</strong>
+                    <textarea class="w-100"  rows="5" style="resize: none;" required></textarea>
+                </label>
+            </div>
+
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you ever been found in violation of customs laws?<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="violation-of-customs-laws"
+                        name="violation-of-customs-laws" required>
+                    <label class="form-check-label" for="violation-of-customs-laws">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="violation-of-customs-laws-no"
+                        name="violation-of-customs-laws" required>
+                    <label class="form-check-label" for="violation-of-customs-laws-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden textarea 3 -->
+            <div id="hidden-violation-of-customs-laws-textarea" class="row hidden">
+                <label class="font-weight-bold col-12">Give exact details of the grounds for your rehabilitation<strong
+                        class="text-danger">*</strong>
+                    <textarea class="w-100" rows="5" style="resize: none;" required></textarea>
+                </label>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Have you ever been found in violation of immigration laws?<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="violation-of-immigration-laws"
+                        name="violation-of-immigration-laws" required>
+                    <label class="form-check-label" for="violation-of-immigration-laws">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="violation-of-immigration-laws-no"
+                        name="violation-of-immigration-laws" required>
+                    <label class="form-check-label" for="violation-of-immigration-laws-no">No</label>
+                </div>
+            </div>
+            <!-- Hidden textarea 4 -->
+            <div id="hidden-violation-of-immigration-laws-textarea" class="row hidden">
+                <label class="font-weight-bold col-12">Give exact details of your violation(s)<strong
+                        class="text-danger">*</strong>
+                    <textarea class="w-100" rows="5" style="resize: none;" required></textarea>
+                </label>
+            </div>
+            <!-- Buttons Next -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button type="button" class="btn btn-dark previous">Previous</button>
+                <button type="button" class="btn btn-dark next">Next</button>
+            </div>
+        </form>
+
+        <!-- GOVT FEE -->
+        <form id="govt-fee" class="hidden">
+            <h3 class="text-uppercase text-primary">GOVT FEE</h3>
+            <div>
+                <h4><u>Instructions</u></h4>
+                <div>1. Complete one (1) FAST application form per person.</div>
+                <div>2. Complete the address and employment fields for the last five (5) years in full, leaving NO gaps.
+                </div>
+                <div>3. At the end of the form you will be directed to our payment provider to pay the processing
+                    service fee - we cannot process your form unless you pay this fee.</div>
+                <div>4. When we receive your completed form and service fee, you will receive email confirmation from us
+                    within two business days.</div>
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="cc-type" class="font-weight-bold">Credit Card Type<strong
+                            class="text-danger">*</strong></label>
+                    <select id="cc-type" class="form-control" name="credit-card-type" required>
+                        <option selected>Select from options</option>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="american-express">American express</option>
+                        <option value="discover">Discover</option>
+                        <option value="diners-club">Diners club</option>
+                        <option value="unionpay">Unionpay</option>
+                        <option value="jcb">jcb</option>
+                    </select>
+                </div>
+                <div class="col mb-3">
+                    <label for="cc-number" class="font-weight-bold">Credit Card Number<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="cc-number" name="credit-card-number" value="" required>
+                </div>
+            </div>
+            <p class="text-danger font-weight-bold"><u>If your credit card is incorrect, declined or invalid you may not
+                    be able to
+                    apply for the program for three months. Double-check to confirm the number is correct!</u></div>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="cc-expiry-month" class="font-weight-bold">Credit Card Expiry Month<strong
+                            class="text-danger">*</strong></label>
+                    <select id="cc-expiry-month" class="form-control" name="credit-card-expiry-monyh" required>
+                        <option selected>Select from options</option>
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+                        <option value="july">July</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+                        <option value="octomber">Octomber</option>
+                        <option value="november">November</option>
+                        <option value="december">December</option>
+                    </select>
+                </div>
+                <div class="form-group col">
+                    <label for="cc-expiry-year" class="font-weight-bold">Credit Card Expiry Year<strong
+                            class="text-danger">*</strong></label>
+                    <select id="cc-expiry-year" class="form-control" name="credit-card-expiry-year" required>
+                        <option selected>Select from options</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="cvv-code" class="font-weight-bold">CVV Code<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="cvv-code" name="cvv-code" value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="name-on-cc" class="font-weight-bold">Name on the card<strong
+                            class="text-danger">*</strong></label>
+                    <input type="text" class="form-control" id="name-on-cc" name="name-of-card" value="" required>
+                </div>
+            </div>
+            <div class="row">
+                <label class="font-weight-bold col-12">Is the billing address the same as your current address<strong
+                        class="text-danger">*</strong></label>
+                <div class="form-check col-12 ml-3">
+                    <input type="radio" class="form-check-input" id="billing-address-same" name="billing-address-same"
+                        required>
+                    <label class="form-check-label" for="billing-address-same">Yes</label>
+                </div>
+                <div class="form-check col-12 mb-3 ml-3">
+                    <input type="radio" class="form-check-input" id="billing-address-same-no" name="billing-address-same" required>
+                    <label class="form-check-label" for="billing-address-same-no">No</label>
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" name="agreement" id="agreement" required>
+                <label class="form-check-label font-weight-bold" for="agreement">Do you
+                    understand
+                    & agree that your information is being shared with government agencies?<strong
+                        class="text-danger">*</strong></label>
+            </div>
+            <div>By submitting this form, you certify that the information provided on this form was given voluntarily
+                and
+                is true and
+                complete. You are also certifying that you understand that this information will be shared with law
+                enforcement
+                agencies, customs and border protection government immigration agencies and other government bodies with
+                applicable
+                laws.</div>
+            <!-- Buttons Previous -->
+            <div class="d-flex flex-row justify-content-between my-3">
+                <button class="btn btn-dark previous">Previous</button>
+                <button id="submit" type="submit" class="btn btn-success next">Submit</button>
+            </div>
+        </form>
+
+    </main>
+    <footer></footer>
+    <!-- Date Picker -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet"
+        type="text/css" />
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Script -->
+    <script src="./index.js"></script>
+    <script src="./localeStorage.js"></script>
+</body>
+
+</html>
